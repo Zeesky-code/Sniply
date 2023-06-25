@@ -4,8 +4,9 @@ import { UserSignUpDto } from './dto/sign-up.dto';
 import { ApiResponseMetadata } from '../common/decorators/response.decorator';
 import { UserSignInDto } from './dto/sign-in.dto';
 import { Public } from '../common/decorators/auth.public.decorator';
+import { ApiTags } from '@nestjs/swagger';
 
-
+@ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
