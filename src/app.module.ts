@@ -5,6 +5,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from './prisma/prisma.module';
+import { UrlsModule } from './urls/urls.module';
 import configuration from '../config/configuration';
 
 @Module({
@@ -12,7 +13,7 @@ import configuration from '../config/configuration';
     isGlobal: true,
     load: [configuration],
     expandVariables: true,
-  }),AuthModule, UsersModule, PrismaModule],
+  }),AuthModule, UsersModule, PrismaModule, UrlsModule],
   controllers: [AppController],
   providers: [AppService],
 })
