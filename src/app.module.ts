@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from './prisma/prisma.module';
 import { UrlsModule } from './urls/urls.module';
+import { QrcodeModule } from './qrcode/qrcode.module';
 import configuration from '../config/configuration';
 
 @Module({
@@ -13,7 +14,7 @@ import configuration from '../config/configuration';
     isGlobal: true,
     load: [configuration],
     expandVariables: true,
-  }),AuthModule, UsersModule, PrismaModule, UrlsModule],
+  }),AuthModule, UsersModule, PrismaModule, UrlsModule, QrcodeModule],
   controllers: [AppController],
   providers: [AppService],
 })

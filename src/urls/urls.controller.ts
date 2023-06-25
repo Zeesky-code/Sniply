@@ -3,6 +3,7 @@ import {
     Post,
     Body,
     Get,
+    Patch,
     Param,
     Redirect,
     Req,
@@ -14,7 +15,8 @@ import {
   import { ApiResponseMetadata } from '../common/decorators/response.decorator';
   import { Public } from '../common/decorators/auth.public.decorator';
   import { RequestUser } from '../common/interfaces';
-  
+  import { UpdateUrlDto } from './dto/update-url.dto';
+
   @ApiTags('URLs')
   @Controller()
   export class UrlController {
@@ -61,4 +63,17 @@ import {
     ): Promise<Url> {
       return this.urlService.create(createUrlDto, req);
     }
+
+     /**
+   * Update shortened link
+   */
+  @Public()
+  @Patch('urls/:id')
+  async updateLink(
+    @Param('id') linkId: string,
+    @Body() updateDto: UpdateUrlDto,
+    @Req() req: RequestUser,
+  ) {
+    return this.urlService.updateUrl(linkId, updateDto, req);
+  }
   }
