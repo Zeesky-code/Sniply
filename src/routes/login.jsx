@@ -1,8 +1,7 @@
 import { Form } from "react-router-dom";
 import { useState } from 'react';
 
-export default function SignupPage() {
-    const [username, setName] = useState('');
+export default function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -11,10 +10,7 @@ export default function SignupPage() {
     const [error, setError] = useState(false);
 
     // Handling the name change
-    const handleUsername = (e) => {
-        setName(e.target.value);
-        setSubmitted(false);
-    };
+
 
     // Handling the email change
     const handleEmail = (e) => {
@@ -41,8 +37,6 @@ export default function SignupPage() {
         <div>
             <h1>Signup Page</h1>
             <Form action="edit">
-                <label className="label">Username</label>
-                <input onChange={handleUsername} className="input" value={username} type="text" />
 
                 <label className="label">Email</label>
                 <input onChange={handleEmail} className="input" value={email} type="email" />
