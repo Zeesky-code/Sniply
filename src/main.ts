@@ -9,7 +9,8 @@ import { ErrorInterceptor } from './common/interceptors/error.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
+  app.enableCors();
+  
   app.useGlobalInterceptors(
     new ErrorInterceptor(),
     new RequestInterceptor(),
