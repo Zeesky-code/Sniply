@@ -9,8 +9,8 @@ export default function Root() {
                 </p>
             </div>
             <div className="card">
-                <button>Sign Up</button>
-                <button>Login</button>
+                <a href={`/signup`}><button >Sign Up</button></a>
+                <a href={`/login`}><button>Login</button></a>
             </div>
         </>
         
