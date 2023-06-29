@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SignupPage = () => {
+function SignupPage () {
   const handleSignup = () => {
     // Handle signup logic here
     console.log('Signup button clicked');
