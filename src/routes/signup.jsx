@@ -2,9 +2,10 @@ import { Form } from "react-router-dom";
 import { useState } from 'react';
 
 export default function SignupPage() {
-    const [username, setName] = useState('');
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [message, setMessage] = useState("");
 
     // States for checking the errors
     const [submitted, setSubmitted] = useState(false);
@@ -12,7 +13,7 @@ export default function SignupPage() {
 
     // Handling the name change
     const handleUsername = (e) => {
-        setName(e.target.value);
+        setUsername(e.target.value);
         setSubmitted(false);
     };
 
@@ -28,15 +29,30 @@ export default function SignupPage() {
         setSubmitted(false);
     };
 
-    const handleSignup = (e) => {
+    const handleSignup = async (e) => {
         e.preventDefault();
-        if (name === '' || email === '' || password === '') {
-        setError(true);
-        } else {
-        setSubmitted(true);
-        setError(false);
+        try {
+          let res = await fetch("https://sniply.onrender.com/auth/signup", {
+            method: "POST",
+            body: JSON.stringify({
+              username: username,
+              email: email,
+              password: password,
+            }),
+          });
+          let resJson = await res.json();
+          if (res.status === 201) {
+            setUsername("");
+            setEmail("");
+            setPassword("");
+            setMessage("User created successfully");
+          } else {
+            setMessage("Some error occured");
+          }
+        } catch (err) {
+          console.log(err);
         }
-    };
+      };
     return (
         <div>
             <h1>Signup Page</h1>
@@ -51,7 +67,7 @@ export default function SignupPage() {
                 <input onChange={handlePassword} className="input" value={password} type="password" />
                 <button type="submit" onClick={handleSignup}>Sign Up</button>
             </Form>
-
+            <div className="message">{message ? <p>{message}</p> : null}</div>
         </div>
 
     )
