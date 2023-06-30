@@ -47,7 +47,7 @@ export default function SignupPage() {
             setPassword("");
             setMessage("User created successfully");
           } else {
-            setMessage("Some error occured");
+            setMessage(res.json.message);
           }
         } catch (err) {
           console.log(err);
