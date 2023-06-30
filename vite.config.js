@@ -10,6 +10,10 @@ export default defineConfig({
         target: 'https://sniply.onrender.com',
         changeOrigin: true,
       },
+      '/auth/login': {
+        target: 'https://sniply.onrender.com',
+        changeOrigin: true,
+      },
     },
   },
 })

@@ -32,7 +32,6 @@ export default function SignupPage() {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      console.log(username + ' ' + email + ' ' + password);
       let res = await fetch('/auth/signup', {
         method: 'POST',
         headers: {
