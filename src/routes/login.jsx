@@ -24,6 +24,7 @@ export default function LoginPage() {
     };
 
     const handleLogin = async (e) => {
+        console.log(email + " " + password)
         e.preventDefault();
         try {
             const response = await fetch('/auth/login', {
@@ -38,6 +39,7 @@ export default function LoginPage() {
                 }),
             });
             const data = await response.json();
+            console.log(data)
             if (response.status === 200) {
                 const token = data.data.token;
                 localStorage.setItem('token', token);

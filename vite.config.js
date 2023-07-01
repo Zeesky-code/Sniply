@@ -14,6 +14,10 @@ export default defineConfig({
         target: 'https://sniply.onrender.com',
         changeOrigin: true,
       },
+      '/urls':{
+        target: 'https://sniply.onrender.com',
+        changeOrigin: true,
+      }
     },
   },
 })
