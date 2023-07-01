@@ -27,28 +27,28 @@ export default function LoginPage() {
         e.preventDefault();
         try {
             const response = await fetch('/auth/login', {
-              method: 'POST',
-              headers: {
-                Accept: "application/json",
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                email: email,
-                password: password,
-              }),
+                method: 'POST',
+                headers: {
+                    Accept: "application/json",
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                }),
             });
-            console.log(response)
             const data = await response.json();
             if (response.status === 200) {
-              const token = data.data.token;
-              console.log('Bearer token:', token);
+                const token = data.data.token;
+                localStorage.setItem('token', token);
+                window.location = '/dashboard'
             } else {
                 console.log(data.message)
             }
-    } catch (err) {
-        console.log(err);
+        } catch (err) {
+            console.log(err);
+        }
     }
-}
     return (
         <div>
             <h1>Login Page</h1>
