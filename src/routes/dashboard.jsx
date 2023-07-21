@@ -7,6 +7,9 @@ export default function Dashboard() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        if(!token){
+            window.location = '/login';
+        }
         async function fetchData() {
             const response = await fetch('/urls',{
                 method: 'GET',
