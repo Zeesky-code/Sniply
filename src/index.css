@@ -91,3 +91,19 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.shortenForm{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.shortenForm label{
+  display: none;
+}
+.shortenForm input, .shortenForm button{
+  height: 100%;
+  margin: 0 0 0 10px;
+
+}
