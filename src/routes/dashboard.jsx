@@ -25,13 +25,13 @@ export default function Dashboard() {
                     url: url
                 }),
             })
-            
-            if(response.status != 201){
+
+            if (response.status != 201) {
                 setError('Something went wrong');
-            }else{
-                fetchData();
+            } else {
+                window.location = '/dashboard';
             }
-        }catch(err) {
+        } catch (err) {
             console.log(err);
         }
     }
@@ -69,12 +69,12 @@ export default function Dashboard() {
         <>
             <h1>Dashboard</h1>
             <Form>
-                <div className="shortenForm"> 
+                <div className="shortenForm">
                     <label className="label" >Url</label>
                     <input className="input" type="email" onChange={handleUrl} placeholder="Url to be shortened" />
                     <button onClick={handleShorten}> Shorten </button>
                 </div>
-                
+
             </Form>
             {loading && <div>A moment please...</div>}
             {error && (
@@ -84,8 +84,11 @@ export default function Dashboard() {
             <ul>
                 {data && (data.map((url) => {
                     { console.log(url.longUrl) }
-                    return <li key={url.id}> {url.longUrl}</li>
-
+                    return <div className="shortenForm">
+                        <li key={url.id}> {url.shortUrl}</li>
+                        <button>Get long Url</button>
+                        <button>Edit</button>
+                    </div>
                 }))}
             </ul>
         </>
